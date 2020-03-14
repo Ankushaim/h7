@@ -32,6 +32,7 @@ public class BusPassRunner {
                     password = credential_input.nextLine();
                     if (authCheck.checkCredentials(userId, password, "admin")) {
                         System.out.println("Welcome Admin");
+                        User user_session = new User(userId);
                     }
                     else{
                         System.out.println("Invalid Credentials");
