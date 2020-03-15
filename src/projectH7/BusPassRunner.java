@@ -1,11 +1,14 @@
 package projectH7;
 
-//hello
-
 import java.util.Scanner;
 
 public class BusPassRunner {
     public static void main(String[] args) {
+    	
+    	RouteMaster rm = new RouteMaster();
+    	rm.viewAllRoutes();
+    	rm.viewAllStops();
+    	
         BusPassRunner runObj = new BusPassRunner();
         System.out.println("Welcome to Amazon Transport Service Portal");
         System.out.println("To continue please select the below:");
@@ -13,7 +16,7 @@ public class BusPassRunner {
         System.out.println("2. Registered User");
         System.out.println("3. Visitor");
         System.out.println("4. To Logout");
-        System.out.print("Input:");
+        System.out.print("Input: ");
         while(true) {
             Scanner input = new Scanner(System.in);
             int choice = input.nextInt();
@@ -28,9 +31,9 @@ public class BusPassRunner {
             switch (choice) {
                 case 1:
                     System.out.println("Sign in to continue to ATS Portal");
-                    System.out.print("UserId:");
+                    System.out.print("UserId: ");
                     userId = credential_input.nextLine();
-                    System.out.print("Password:");
+                    System.out.print("Password: ");
                     password = credential_input.nextLine();
                     if (authCheck.checkCredentials(userId, password, "admin")) {
                         System.out.println("Welcome Admin");
@@ -43,12 +46,12 @@ public class BusPassRunner {
                     break;
                 case 2:
                 	System.out.println("Sign in to continue to ATS Portal");
-                    System.out.print("UserId:");
+                    System.out.print("UserId: ");
                     userId = credential_input.nextLine();
-                    System.out.print("Password:");
+                    System.out.print("Password: ");
                     password = credential_input.nextLine();
                     if (authCheck.checkCredentials(userId, password, "user")) {
-                        System.out.println("Welcome User_Name");
+                        UserFactory ob = new UserFactory(userId);
                     }
                     else{
                         System.out.println("Invalid Credentials");
